@@ -1,0 +1,42 @@
+<!-- Use this file to deploy some handlers/chains and services      -->
+<!-- Two ways to do this:                                           -->
+<!--   java org.apache.axis.client.AdminClient deploy.wsdd          -->
+<!--      after the axis server is running                          -->
+<!-- or                                                             -->
+<!--   java org.apache.axis.utils.Admin client|server deploy.wsdd   -->
+<!--      from the same directory that the Axis engine runs         -->
+
+<deployment
+    xmlns="http://xml.apache.org/axis/wsdd/"
+    xmlns:java="http://xml.apache.org/axis/wsdd/providers/java">
+
+  <!-- Services from AdditionAndMultiplicationService WSDL service -->
+
+  <service name="AdditionAndMultiplication" provider="java:RPC" style="wrapped" use="literal">
+      <parameter name="wsdlTargetNamespace" value="http://DefaultNamespace"/>
+      <parameter name="wsdlServiceElement" value="AdditionAndMultiplicationService"/>
+      <parameter name="schemaQualified" value="http://DefaultNamespace"/>
+      <parameter name="wsdlServicePort" value="AdditionAndMultiplication"/>
+      <parameter name="className" value="DefaultNamespace.AdditionAndMultiplicationSoapBindingImpl"/>
+      <parameter name="wsdlPortType" value="AdditionAndMultiplication"/>
+      <parameter name="typeMappingVersion" value="1.2"/>
+      <operation name="mult" qname="operNS:mult" xmlns:operNS="http://DefaultNamespace" returnQName="retNS:multReturn" xmlns:retNS="http://DefaultNamespace" returnType="rtns:long" xmlns:rtns="http://www.w3.org/2001/XMLSchema" soapAction="" >
+        <parameter qname="pns:firstNum" xmlns:pns="http://DefaultNamespace" type="tns:long" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="pns:secondNum" xmlns:pns="http://DefaultNamespace" type="tns:long" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+      </operation>
+      <operation name="add" qname="operNS:add" xmlns:operNS="http://DefaultNamespace" returnQName="retNS:addReturn" xmlns:retNS="http://DefaultNamespace" returnType="rtns:long" xmlns:rtns="http://www.w3.org/2001/XMLSchema" soapAction="" >
+        <parameter qname="pns:firstNum" xmlns:pns="http://DefaultNamespace" type="tns:long" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="pns:secondNum" xmlns:pns="http://DefaultNamespace" type="tns:long" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+      </operation>
+      <operation name="sum" qname="operNS:sum" xmlns:operNS="http://DefaultNamespace" returnQName="retNS:sumReturn" xmlns:retNS="http://DefaultNamespace" returnType="rtns:int" xmlns:rtns="http://www.w3.org/2001/XMLSchema" soapAction="" >
+        <parameter qname="pns:firstNum" xmlns:pns="http://DefaultNamespace" type="tns:int" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="pns:secondNum" xmlns:pns="http://DefaultNamespace" type="tns:int" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+      </operation>
+      <operation name="multiply" qname="operNS:multiply" xmlns:operNS="http://DefaultNamespace" returnQName="retNS:multiplyReturn" xmlns:retNS="http://DefaultNamespace" returnType="rtns:int" xmlns:rtns="http://www.w3.org/2001/XMLSchema" soapAction="" >
+        <parameter qname="pns:firstNum" xmlns:pns="http://DefaultNamespace" type="tns:int" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="pns:secondNum" xmlns:pns="http://DefaultNamespace" type="tns:int" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+      </operation>
+      <parameter name="allowedMethods" value="add mult sum multiply"/>
+
+  </service>
+</deployment>
