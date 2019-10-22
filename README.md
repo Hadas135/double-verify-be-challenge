@@ -27,9 +27,3 @@ To multiply, write in your browser:
 `http://127.0.0.1/mult?<first_number>,<second_number>`  
 For example:  
 `http://127.0.0.1/mult?999,999`
-
-#### Notes:
-* I chose to pass the numbers as part of the request URL, because this is the simplest way and it seems unnecessary to import additional libraries just for a different structure.
-* Besides implementing the algorithm itself, the extra challenge was creating the http web service properly.
-* If I had more time, I would have performed more tests on the input and taking care of the edge cases.
-* The task itself took me quite a while, because I had to make some installations. Also, I learned something new - how to create http web service in java language.
